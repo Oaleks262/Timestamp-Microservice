@@ -23,12 +23,12 @@ app.get("/", function (req, res) {
 app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
-app.get('/api/:date?', (req, res) => {
+app.get('/api/:date', (req, res) => {
   const { date } = req.params;
   let dateObject;
 
-  if (!date) {
-    dateObject = new Date();
+  if (!isNaN(date)) {
+    dateObject = new Date(parseInt(date));
   } else {
     dateObject = new Date(date);
   }
